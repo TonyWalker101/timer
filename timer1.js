@@ -1,5 +1,4 @@
 // For every input, alarm will beep after the input's value in seconds
-
 const process = require("process");
 
 // organizes array into only the inputted elements in ascending order
@@ -14,7 +13,7 @@ const alarm = num => {
 
 for (let i = 0; i < args.length; i++) {
   
-  if (args[i] < 0 || !Number.isInteger(parseInt(args[i]))) {
+  if (args[i] < 0 || typeof parseInt(args[i]) !== "number") {
     continue;
   }
 
