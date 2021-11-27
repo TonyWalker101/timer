@@ -2,20 +2,20 @@
 const process = require("process");
 
 // organizes array into only the inputted elements in ascending order
-const args = process.argv.slice(2).sort();
+const args = process.argv.slice(2);
 
 // Helper function that calls the setTimeout function
 const alarm = num => {
-  return setTimeout(() => {
-    process.stdout.write('\x07');
-  }, num * 1000);
-};
-
-for (let i = 0; i < args.length; i++) {
-  
-  if (args[i] < 0 || typeof parseInt(args[i]) !== "number") {
-    continue;
+  const number = Number(num);
+  if (isNaN(number) || number < 0) {
+    return;
   }
 
-  alarm(args[i]);
+  return setTimeout(() => {
+    process.stdout.write('\x07');
+  }, number * 1000);
+};
+
+for (const arg of args) {
+  alarm(arg);
 }
